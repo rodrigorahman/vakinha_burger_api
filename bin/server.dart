@@ -4,6 +4,7 @@ import 'package:shelf/shelf.dart';
 import 'package:shelf/shelf_io.dart';
 import 'package:shelf_router/shelf_router.dart';
 import 'package:dotenv/dotenv.dart' show load;
+import 'package:vakinha_burger_api/app/core/gerencianet/gerencianet_rest_client.dart';
 import 'package:vakinha_burger_api/app/modules/auth/auth_controller.dart';
 // Configure routes.
 final _router = Router()
