@@ -66,4 +66,26 @@ class UserRepository {
       await conn?.close();
     }
   }
+
+  Future<User> findById(int id) async {
+    MySqlConnection? conn;
+    try {
+      conn = await Database().openConnection();
+      final result =
+          await conn.query('select * from usuario where id = ?', [id]);
+      final mysqlData = result.first;
+      return User(
+        id: mysqlData['id'],
+        name: mysqlData['nome'],
+        email: mysqlData['email'],
+        password: '',
+      );
+    } on MySqlException catch (e, s) {
+      print(e);
+      print(s);
+      throw Exception();
+    } finally {
+      await conn?.close();
+    }
+  }
 }
