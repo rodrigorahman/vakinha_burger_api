@@ -3,8 +3,8 @@ import 'package:shelf/shelf.dart' as shelf;
 
 shelf.Middleware requestCounter([CollectorRegistry? registry]) {
   final counter = Counter(
-    name: 'count_request',
-    help: 'Total Requests',
+    name: 'vakinha_request_total',
+    help: 'Contador de Requests',
     labelNames: ['path'],
   );
 
@@ -22,7 +22,7 @@ shelf.Middleware requestCounter([CollectorRegistry? registry]) {
 
 shelf.Middleware requestTimeDurationPerPath([CollectorRegistry? registry]) {
   final histogram = Histogram(
-    name: 'http_request_duration_path_seconds',
+    name: 'vakinha_http_request_duration_path_seconds',
     help: 'A histogram of the HTTP request durations.',
     labelNames: ['path', 'method', 'code'],
   );
