@@ -24,10 +24,12 @@ class ProductRepository {
           )
           .toList();
     } on MySqlException catch (e, s) {
-      log('Erro ao buscar produtos', error: e, stackTrace: s);
+      print(e);
+      print(s);
       throw Exception();
     } catch (e, s) {
-      log('Erro ao buscar produtos', error: e, stackTrace: s);
+      print(e);
+      print(s);
       throw Exception();
     } finally {
       await conn?.close();
@@ -51,7 +53,8 @@ class ProductRepository {
         image: (mysqlData['imagem'] as Blob?)?.toString() ?? '',
       );
     } on MySqlException catch (e, s) {
-      log('Erro ao buscar produtos', error: e, stackTrace: s);
+      print(e);
+      print(s);
       throw Exception();
     } finally {
       await conn?.close();
