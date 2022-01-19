@@ -24,8 +24,7 @@ class ProductRepository {
           )
           .toList();
     } on MySqlException catch (e, s) {
-      print(e);
-      print(s);
+      log('Erro ao buscar produtos', error: e, stackTrace: s);
       throw Exception();
     } finally {
       await conn?.close();
