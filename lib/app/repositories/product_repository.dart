@@ -26,10 +26,8 @@ class ProductRepository {
     } on MySqlException catch (e, s) {
       log('Erro ao buscar produtos', error: e, stackTrace: s);
       throw Exception();
-    }catch(e,s) {
-      print('Deu RUIM');
-      print(e);
-      print(s);
+    } catch (e, s) {
+      log('Erro ao buscar produtos', error: e, stackTrace: s);
       throw Exception();
     } finally {
       await conn?.close();
