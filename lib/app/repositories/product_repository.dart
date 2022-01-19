@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:mysql1/mysql1.dart';
 import 'package:vakinha_burger_api/app/core/database/database.dart';
 import 'package:vakinha_burger_api/app/entities/product.dart';
@@ -47,8 +49,7 @@ class ProductRepository {
         image: (mysqlData['imagem'] as Blob?)?.toString() ?? '',
       );
     } on MySqlException catch (e, s) {
-      print(e);
-      print(s);
+      log('Erro ao buscar produtos', error: e, stackTrace: s);
       throw Exception();
     } finally {
       await conn?.close();
