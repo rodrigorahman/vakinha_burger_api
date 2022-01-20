@@ -11,6 +11,7 @@ class Database {
         user: env['DATABASE_USER'] ?? env['databaseUser'],
         password: env['DATABASE_PASSWORD'] ?? env['databasePassword'],
         db: env['DATABASE_NAME'] ?? env['databaseName'],
+        timeout: Duration(seconds: 20)
       ),
     );
   }
