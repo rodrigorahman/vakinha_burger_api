@@ -5,17 +5,19 @@ shelf.Middleware requestCounter([CollectorRegistry? registry]) {
   final counter = Counter(
     name: 'vakinha_request_total',
     help: 'Contador de Requests',
-    labelNames: ['path'],
+    labelNames: ['path', 'statusCode'],
   );
 
   registry ??= CollectorRegistry.defaultRegistry;
   registry.register(counter);
 
   return (innerHandler) {
-    return (request) {
+    return (request) async {
       final path = request.url.path;
-      counter.labels([path]).inc();
-      return innerHandler(request);
+      
+      var response = await innerHandler(request);
+      counter.labels([path, response.statusCode.toString()]).inc();
+      return response;
     };
   };
 }
