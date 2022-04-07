@@ -8,6 +8,7 @@ import 'package:shelf_static/shelf_static.dart';
 import 'package:vakinha_burger_api/app/modules/auth/auth_controller.dart';
 import 'package:vakinha_burger_api/app/modules/order/order_controller.dart';
 import 'package:vakinha_burger_api/app/modules/product/product_controller.dart';
+import 'package:vakinha_burger_api/app/modules/webhooks/gerencianet_webhooks_controller.dart';
 
 
 final staticFiles = createStaticHandler('images/', listDirectories: true);
@@ -18,7 +19,7 @@ final _router = Router()
   ..mount('/auth/', AuthController().router)
   ..mount('/products/', ProductController().router)
   ..mount('/order/', OrderController().router)
-  ;
+  ..mount('/gerencianet/webhook/', GerencianetWebhooksController().router);
 
 
 void main(List<String> args) async {

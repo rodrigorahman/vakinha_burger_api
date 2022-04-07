@@ -16,14 +16,14 @@ class GerencianetPix {
           'cpf': cpf,
           'nome': name,
         },
-        'valor': {'original': '$value'},
+        'valor': {'original': value.toStringAsFixed(2)},
         'chave': env['gerencianetChavePix'],
         'solicitacaoPagador': 'pedido de número $orderId no vakinha burger',
         'infoAdicionais': [
           {'nome': 'orderId', 'valor': '$orderId'}
         ]
       };
-
+      print(billingData);
       final billingResponse = await gerencianetRestClient.auth().post(
             '/v2/cob',
             data: billingData,
