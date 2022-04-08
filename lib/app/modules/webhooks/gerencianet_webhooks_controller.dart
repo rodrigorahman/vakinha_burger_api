@@ -19,7 +19,7 @@ class GerencianetWebhooksController {
     });
   }
 
-  @Route.post('/webhook/')
+  @Route.post('/webhook')
   Future<Response> webhookConfig(Request request) async {
     return Response(200, headers: {
       'content-type': 'application/json',
